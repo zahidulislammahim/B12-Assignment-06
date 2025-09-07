@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Green Earth</title>
+    <!-- Daisy UI and Teliwind Set up -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      * {
+        font-family: "Inter", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-[#F0FDF4]">
+    <header class="bg-[#CFF0DC]">
+      <nav class="flex justify-around items-center p-4 bg-[#15803D]">
+        <h2 class="text-[#FFF] font-bold text-2xl cursor-pointer">
+          Green Earth
+        </h2>
+        <ul class="flex flex-col space-x-4 text-white md:flex md:flex-row">
+          <li class="cursor-pointer">About</li>
+          <li class="cursor-pointer">Gallery</li>
+          <li class="cursor-pointer">plant a tree</li>
+        </ul>
+        <button
+          class="bg-[#FACC15] rounded-full px-5 py-3 text-[#15803D] font-semibold cursor-pointer"
+        >
+          Plant a Tree
+        </button>
+      </nav>
+
+      <!-- hero part -->
+      <main
+        class="md:[background-image:url('assets/hero-leaf1.png'),url('assets/hero-leaf2.png')] md:[background-position:left,right] md:bg-no-repeat"
+      >
+        <div>
+          <div
+            class="flex flex-col items-center justify-center text-center mx-4 pt-40"
+          >
+            <h1 class="text-5xl text-[#1F2937] font-bold">
+              Plant a Tree, Grow a Future
+            </h1>
+            <p class="text-[#1F2937] max-w-xl">
+              Join our mission to plant 1 million trees and make the Earth
+              greener for future generations.
+            </p>
+            <button
+              class="bg-[#FACC15] rounded-full px-5 py-3 text-[#15803D] font-semibold cursor-pointer mb-20 mt-5"
+            >
+              Get Involved
+            </button>
+          </div>
+        </div>
+      </main>
+    </header>
+
+    <!-- total card and sum section -->
+    <section class="container mx-auto my-20 px-4">
+      <h2 class="text-3xl font-bold text-[#1F2937] mb-10 text-center">
+        Choose Your Trees
+      </h2>
+      <div class="flex flex-col md:flex-row gap-8">
+
+        <!-- CATEGORIES -->
+        <aside class="w-4/4 md:w-70">
+          <h2 class="text-xl font-bold">Categories</h2>
+          <ul class="">
+            <li class="p-2 hover:bg-[#15803D] hover:text-white rounded">
+              All Trees
+            </li>
+            <li class="p-2 hover:bg-[#15803D] hover:text-white rounded">
+              Fruit Trees
+            </li>
+            <li class="p-2 hover:bg-[#15803D] hover:text-white rounded">
+              Flowering Trees
+            </li>
+          </ul>
+        </aside>
+
+        
+        <div>
+          <!-- TREE CARDS -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white p-4 rounded shadow">
+              <img
+                src="assets/tree1.jpg"
+                alt="Tree 1"
+                class="w-full h-48 object-cover rounded mb-4 bg-gray-200"/>
+              <h3 class="text-xl font-bold mb-2">Oak Tree</h3>
+              <p class="text-gray-700 mb-4">
+                A majestic oak tree that provides shade and beauty.
+              </p>
+              <div class="flex justify-between items-center mb-4">
+                <p class="bg-[#DCFCE7] py-2 px-3 rounded-full">Fruit tree</p>
+                <p>
+                  <i class="fa-solid fa-bangladeshi-taka-sign"></i
+                  ><span class="font-bold">500</span>
+                </p>
+              </div>
+              <button
+                class="bg-[#15803D] text-white px-4 py-2 rounded-full hover:bg-[#0F7A2D] w-full">
+                Plant Now
+              </button>
+            </div>
+            <div class="bg-white p-4 rounded shadow">
+              <img
+                src="assets/tree1.jpg"
+                alt="Tree 1"
+                class="w-full h-48 object-cover rounded mb-4 bg-gray-200"/>
+              <h3 class="text-xl font-bold mb-2">Oak Tree</h3>
+              <p class="text-gray-700 mb-4">
+                A majestic oak tree that provides shade and beauty.
+              </p>
+              <div class="flex justify-between items-center mb-4">
+                <p class="bg-[#DCFCE7] py-2 px-3 rounded-full">Fruit tree</p>
+                <p>
+                  <i class="fa-solid fa-bangladeshi-taka-sign"></i
+                  ><span class="font-bold">500</span>
+                </p>
+              </div>
+              <button
+                class="bg-[#15803D] text-white px-4 py-2 rounded-full hover:bg-[#0F7A2D] w-full">
+                Plant Now
+              </button>
+            </div>
+            <div class="bg-white p-4 rounded shadow">
+              <img
+                src="assets/tree1.jpg"
+                alt="Tree 1"
+                class="w-full h-48 object-cover rounded mb-4 bg-gray-200"/>
+              <h3 class="text-xl font-bold mb-2">Oak Tree</h3>
+              <p class="text-gray-700 mb-4">
+                A majestic oak tree that provides shade and beauty.
+              </p>
+              <div class="flex justify-between items-center mb-4">
+                <p class="bg-[#DCFCE7] py-2 px-3 rounded-full">Fruit tree</p>
+                <p>
+                  <i class="fa-solid fa-bangladeshi-taka-sign"></i
+                  ><span class="font-bold">500</span>
+                </p>
+              </div>
+              <button
+                class="bg-[#15803D] text-white px-4 py-2 rounded-full hover:bg-[#0F7A2D] w-full">
+                Plant Now
+              </button>
+            </div>
+            <div class="bg-white p-4 rounded shadow">
+              <img
+                src="assets/tree1.jpg"
+                alt="Tree 1"
+                class="w-full h-48 object-cover rounded mb-4 bg-gray-200"/>
+              <h3 class="text-xl font-bold mb-2">Oak Tree</h3>
+              <p class="text-gray-700 mb-4">
+                A majestic oak tree that provides shade and beauty.
+              </p>
+              <div class="flex justify-between items-center mb-4">
+                <p class="bg-[#DCFCE7] py-2 px-3 rounded-full">Fruit tree</p>
+                <p>
+                  <i class="fa-solid fa-bangladeshi-taka-sign"></i
+                  ><span class="font-bold">500</span>
+                </p>
+              </div>
+              <button
+                class="bg-[#15803D] text-white px-4 py-2 rounded-full hover:bg-[#0F7A2D] w-full">
+                Plant Now
+              </button>
+            </div>
+            <div class="bg-white p-4 rounded shadow">
+              <img
+                src="assets/tree1.jpg"
+                alt="Tree 1"
+                class="w-full h-48 object-cover rounded mb-4 bg-gray-200"/>
+              <h3 class="text-xl font-bold mb-2">Oak Tree</h3>
+              <p class="text-gray-700 mb-4">
+                A majestic oak tree that provides shade and beauty.
+              </p>
+              <div class="flex justify-between items-center mb-4">
+                <p class="bg-[#DCFCE7] py-2 px-3 rounded-full">Fruit tree</p>
+                <p>
+                  <i class="fa-solid fa-bangladeshi-taka-sign"></i
+                  ><span class="font-bold">500</span>
+                </p>
+              </div>
+              <button
+                class="bg-[#15803D] text-white px-4 py-2 rounded-full hover:bg-[#0F7A2D] w-full">
+                Plant Now
+              </button>
+            </div>
+            <div class="bg-white p-4 rounded shadow">
+              <img
+                src="assets/tree1.jpg"
+                alt="Tree 1"
+                class="w-full h-48 object-cover rounded mb-4 bg-gray-200"/>
+              <h3 class="text-xl font-bold mb-2">Oak Tree</h3>
+              <p class="text-gray-700 mb-4">
+                A majestic oak tree that provides shade and beauty.
+              </p>
+              <div class="flex justify-between items-center mb-4">
+                <p class="bg-[#DCFCE7] py-2 px-3 rounded-full">Fruit tree</p>
+                <p>
+                  <i class="fa-solid fa-bangladeshi-taka-sign"></i
+                  ><span class="font-bold">500</span>
+                </p>
+              </div>
+              <button
+                class="bg-[#15803D] text-white px-4 py-2 rounded-full hover:bg-[#0F7A2D] w-full">
+                Plant Now
+              </button>
+            </div>
+          </div>
+          
+        </div>
+
+        <!-- Add to card -->
+        <aside>
+          <div class="bg-white p-4 rounded w-full md:w-50">
+            <h2 class="text-xl font-bold mb-4">Your Cart</h2>
+            <!-- add to card item -->
+            <div class="flex justify-between items-center mb-4 bg-[#F0FDF4] p-2 rounded-lg">
+              <div>
+                <h3>tree name</h3>
+                <p class="text-gray-500"><i class="fa-solid fa-bangladeshi-taka-sign"></i><span>500</span><i class="fa-solid fa-xmark "></i><span>1</span></p>
+              </div>
+              <i class="fa-solid fa-circle-xmark hover:text-red-600 text-gray-500 text-2xl"></i>
+            </div>
+            <div class="flex justify-between items-center mb-4 bg-[#F0FDF4] p-2 rounded-lg">
+              <div>
+                <h3>tree name</h3>
+                <p class="text-gray-500"><i class="fa-solid fa-bangladeshi-taka-sign"></i><span>500</span><i class="fa-solid fa-xmark "></i><span>1</span></p>
+              </div>
+              <i class="fa-solid fa-circle-xmark hover:text-red-600 text-gray-500 text-2xl"></i>
+            </div>
+            <!-- Total sum -->
+            <hr> 
+            <div class="flex justify-between items-center ">
+              <h4 class="font-bold text-xl">Total:</h4>
+              <p><i class="fa-solid fa-bangladeshi-taka-sign"></i><span class="font-bold">500</span></p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- about the Campaign -->
+    <section class="max-w-6xl mx-auto pb-10">
+      <h2 class="text-[#1F2937] text-3xl font-bold text-center">About the Campaign </h2>
+      <div class="flex flex-col md:flex-row items-center justify-center gap-8  p-8 ">
+        <img src="assets/about.png" alt="">
+        <div>
+          <p>Green Earth is a global tree plantation initiative dedicated to fighting climate change. Since our start, we’ve planted over 500,000 trees worldwide. By joining our campaign, you help restore forests, create habitats for wildlife, and combat global warming.</p>
+           <ul class="list-inside mt-4 space-y-2">
+               <li class="list-disc">Restoration of natural habitats</li>
+               <li class="list-disc">Improvement of air quality</li>
+               <li class="list-disc">Support for local communities</li>
+            </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Impact -->
+    <section class="bg-[#CFF0DC] py-20">
+      <h2 class="text-[#1F2937] text-3xl font-bold text-center">Our Impact</h2>
+      <div class="flex flex-col md:flex-row md:gap-14 items-center justify-center gap-8  p-8 text-center">
+        <div class="bg-white px-24 py-10 rounded-xl w-96">
+          <h3 class="text-3xl font-bold text-[#15803D]">500K+</h3>
+          <p class="text-[#1F2937]">Trees planted</p>
+        </div>
+        <div class="bg-white px-24 py-10 rounded-xl w-96">
+          <h3 class="text-3xl font-bold text-[#15803D]">120+</h3>
+          <p class="text-[#1F2937]">Communities Involved</p>
+        </div>
+        <div class="bg-white px-24 py-10 rounded-xl w-96">
+          <h3 class="text-3xl font-bold text-[#15803D]">30+</h3> 
+          <p class="text-[#1F2937]">Countries Reached</p>
+        </div>
+      </div>
+    </section>
+
+    <section class=" bg-[#166534] py-14">
+      <h2 class=" text-3xl font-bold text-center mb-5 text-white">Plant a Tree Today</h2>
+      <div class="bg-[#15803D] flex flex-col  items-center justify-center gap-4  w-[40%]  mx-auto p-8 rounded-2xl">
+        <input type="text" placeholder="Your Name" class="outline-none border-none p-2 mb-4 w-full  bg-white rounded-lg">
+        <input type="email" placeholder="Your Email Address" class="outline-none border-none p-2 rounded-lg mb-4 w-full  bg-white ">
+        <select class="select select-md w-full rounded-lg outline-none text-gray-600 mb-3">
+            <option>Number Of Trees</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+        </select>
+        <button
+          class="bg-[#FACC15] rounded-full px-5 py-3 text-[#15803D] font-semibold cursor-pointer w-full ">Donate Now</button>
+      </div>
+    </section>
+
+    <footer class="bg-[#14532D] text-center text-[#FFF] p-4">
+      <p>© 2025 Green Earth. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>
