@@ -114,48 +114,39 @@
         Choose Your Trees
       </h2>
       <div class="flex flex-col md:flex-row gap-8">
-        <!-- CATEGORIES -->
-        <aside class="w-4/4 md:max-w-xs">
-          <h2 class="text-xl font-bold">Categories</h2>
-          <ul class="" id="category-list">
-            <!-- category list -->
+        <!-- Categories -->
+        <aside class="w-full md:max-w-xs">
+          <h2 class="text-xl font-bold mb-3">Categories</h2>
+          <ul id="category-list">
             <li
               id="all-trees"
-              class="p-2 hover:bg-[#15803D] hover:text-white rounded"
+              class="p-2 hover:bg-[#15803D] hover:text-white rounded cursor-pointer"
             >
               All Trees
             </li>
           </ul>
         </aside>
 
-        <div >
-          <!-- TREE CARDS -->
-          <div id="card-container" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <!--ALL card item -->
-            <!-- Loading Animation -->
-            <div class="loader align-center justify-center mb-4 " id="loader">
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-            </div>
+        <div class="flex-1">
 
-          </div>
+          <!-- Cards -->
+          <div
+            id="card-container"
+            class="grid grid-cols-1 md:grid-cols-3 gap-4"
+          ></div>
         </div>
 
-        <!-- Add to card -->
+        <!-- Cart -->
         <aside>
-          <div class="bg-white p-4 rounded w-full md:w-50">
+          <div class="bg-white p-4 rounded w-full md:w-60">
             <h2 class="text-xl font-bold mb-4">Your Cart</h2>
-            <div id="add-to-card-con">
-              <!-- add to card item -->
-            </div>
-            <!-- Total sum -->
-            <hr />
+            <div id="add-to-card-con"></div>
+            <hr class="my-3" />
             <div class="flex justify-between items-center">
               <h4 class="font-bold text-xl">Total:</h4>
               <p>
-                <i class="fa-solid fa-bangladeshi-taka-sign"></i
-                ><span id="total-sum" class="font-bold">0</span>
+                <i class="fa-solid fa-bangladeshi-taka-sign"></i>
+                <span id="total-sum" class="font-bold">0</span>
               </p>
             </div>
           </div>

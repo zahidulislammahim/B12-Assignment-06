@@ -13,16 +13,16 @@ allTrees.addEventListener("click", (e) => {
   if (e.target.localName === "li") {
     e.target.classList.add(...["bg-[#15803D]", "text-white"]);
   }
+  showLoading();
   allTreesFun();
 });
 // all trees function
 const allTreesFun = () => {
-  cardContainer.innerHTML = "";
   fetch("https://openapi.programming-hero.com/api/plants")
     .then((res) => res.json())
     .then((data) => {
       const allTreesData = data.plants;
-
+      cardContainer.innerHTML = "";
       allTreesData.forEach((tree) => {
         // create a div for each tree Card
         const div = document.createElement("div");
@@ -35,7 +35,7 @@ const allTreesFun = () => {
               </h3>
              
               <p class="text-gray-700 mb-4">
-                ${tree.description}
+                ${tree.description.slice(0, 100)}...
               </p>
               
               <div class="flex justify-between items-center mb-4">
@@ -94,36 +94,56 @@ cards(); // call the function to load categories--------------------------------
 
 // Add to cart button
 const addToCard = (id, name, price) => {
-  const div = document.createElement("div");
-  div.className =
-    "flex justify-between items-center mb-4 bg-[#F0FDF4] p-2 rounded-lg";
-  div.innerHTML = `
-      <div id="${id}">
-        <h3>
-          ${name}
-        </h3>
-        <p class="text-gray-500"><i class="fa-solid fa-bangladeshi-taka-sign"></i>
-        <span>
-        ${price}
-        </span>
-        <i class="fa-solid fa-xmark "></i><span>1</span></p>
+  //  if item already exists
+  const existingItem = document.getElementById(`cart-item-${id}`);
+
+  if (existingItem) {
+    const qtySpan = existingItem.querySelector(".item-qty");
+    let qty = parseInt(qtySpan.innerText);
+    qty++;
+    qtySpan.innerText = qty;
+
+  } else {
+    const div = document.createElement("div");
+    div.className =
+      "flex justify-between items-center mb-4 bg-[#F0FDF4] p-2 rounded-lg";
+    div.id = `cart-item-${id}`;
+    div.innerHTML = `
+      <div>
+        <h3>${name}</h3>
+        <p class="text-gray-500">
+          <i class="fa-solid fa-bangladeshi-taka-sign"></i>
+          <span class="item-price">${price}</span>
+          <span class="ml-2">Qty: <span class="item-qty">1</span></span>
+        </p>
       </div>
-        <i onclick="Delete(this, ${price})" class="fa-solid fa-circle-xmark hover:text-red-600 text-gray-500 text-2xl"></i>
-  `;
-  addToCardCon.appendChild(div);
+      <i onclick="Delete(this, ${price}, ${id})" 
+         class="fa-solid fa-circle-xmark hover:text-red-600 text-gray-500 text-2xl cursor-pointer"></i>
+    `;
+    addToCardCon.appendChild(div);
+  }
+
   // update total sum
   const total = parseFloat(totalSum.innerText) + price;
   totalSum.innerText = total;
+  alert(`${name} has been added to the cart`);
 };
 
 // Delete item from cart
-const Delete = (element, price) => {
-  element.parentElement.remove();
+const Delete = (element, price, id) => {
+  const item = document.getElementById(`cart-item-${id}`);
+  const qty = parseInt(item.querySelector(".item-qty").innerText);
 
-  // update total sum after delete
-  const total = parseFloat(totalSum.innerText) - price;
+  // remove item price from total sum
+  const total = parseFloat(totalSum.innerText) - (price * qty);
   totalSum.innerText = total;
+
+  // remove item from cart
+  item.remove();
 };
+
+
+// show card with categories
 const showcaragories = (id) => {
   showLoading();
   fetch(`https://openapi.programming-hero.com/api/category/${id}`)
@@ -144,7 +164,7 @@ const showcaragories = (id) => {
               </h3>
              
               <p class="text-gray-700 mb-4">
-                ${tree.description}
+                ${tree.description.slice(0, 100)}...
               </p>
               
               <div class="flex justify-between items-center mb-4">
@@ -169,10 +189,12 @@ const showcaragories = (id) => {
 //   Loading Animation
 const showLoading = () => {
   cardContainer.innerHTML = `
-            <div class="loader align-center justify-center mb-4 " id="loader ">
-              <span class="bar"></span>
-              <span class="bar"></span>
-              <span class="bar"></span>
-            </div>
-    `;
+    <div class="flex justify-center items-center w-full h-64 col-span-full">
+      <div class="loader">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  `;
 };
