@@ -8,14 +8,14 @@ const totalSum = document.getElementById("total-sum");
 allTrees.addEventListener("click", (e) => {
   const allLi = document.querySelectorAll("li");
   allLi.forEach((li) => {
-    li.classList.remove("bg-[#15803D]");
+    li.classList.remove("bg-[#15803D]", "text-white");
   });
   if (e.target.localName === "li") {
-    e.target.classList.add("bg-[#15803D]");
+    e.target.classList.add(...["bg-[#15803D]", "text-white"]);
   }
   allTreesFun();
 });
-
+// all trees function
 const allTreesFun = () => {
   cardContainer.innerHTML = "";
   fetch("https://openapi.programming-hero.com/api/plants")
@@ -71,10 +71,10 @@ const cards = () => {
         li.onclick = (e) => {
           const allLi = document.querySelectorAll("li");
           allLi.forEach((li) => {
-            li.classList.remove("bg-[#15803D]");
+            li.classList.remove("bg-[#15803D]", "text-white");
           });
           if (e.target.localName === "li") {
-            e.target.classList.add("bg-[#15803D]");
+             e.target.classList.add(...["bg-[#15803D]", "text-white"]);
           }
           categorysId.forEach((categoryId, index) => {
             if (cat === categoryName[index]) {
@@ -131,7 +131,6 @@ const showcaragories = (id) => {
     .then((data) => {
       cardContainer.innerHTML = "";
       const categoryTrees = data.plants;
-      console.log(categoryTrees);
 
       categoryTrees.forEach((tree) => {
         // create a div for each tree Card
