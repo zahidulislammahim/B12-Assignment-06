@@ -4,9 +4,15 @@ const cardContainer = document.getElementById("card-container");
 const addToCardCon = document.getElementById("add-to-card-con");
 const totalSum = document.getElementById("total-sum");
 
-
-// all trees Button in catagory
-allTrees.addEventListener("click", () => {
+// all trees Button
+allTrees.addEventListener("click", (e) => {
+  const allLi = document.querySelectorAll("li");
+  allLi.forEach((li) => {
+    li.classList.remove("bg-[#15803D]");
+  });
+  if (e.target.localName === "li") {
+    e.target.classList.add("bg-[#15803D]");
+  }
   allTreesFun();
 });
 
@@ -53,7 +59,6 @@ const allTreesFun = () => {
 };
 allTreesFun(); // call the function to load all trees initially ----------------------
 
-
 // all categories in the sidebar
 const cards = () => {
   fetch("https://openapi.programming-hero.com/api/categories")
@@ -63,13 +68,20 @@ const cards = () => {
       const categorysId = data.categories.map((id) => id.id);
       categoryName.forEach((cat) => {
         const li = document.createElement("li");
-        li.onclick = () => {
+        li.onclick = (e) => {
+          const allLi = document.querySelectorAll("li");
+          allLi.forEach((li) => {
+            li.classList.remove("bg-[#15803D]");
+          });
+          if (e.target.localName === "li") {
+            e.target.classList.add("bg-[#15803D]");
+          }
           categorysId.forEach((categoryId, index) => {
             if (cat === categoryName[index]) {
               showcaragories(categoryId);
             }
           });
-          }
+        };
         li.className = "p-2 hover:bg-[#15803D] hover:text-white rounded";
         li.textContent = cat;
 
@@ -80,8 +92,7 @@ const cards = () => {
 };
 cards(); // call the function to load categories----------------------------------
 
-
-// Add to cart button 
+// Add to cart button
 const addToCard = (id, name, price) => {
   const div = document.createElement("div");
   div.className =
@@ -98,31 +109,29 @@ const addToCard = (id, name, price) => {
         <i class="fa-solid fa-xmark "></i><span>1</span></p>
       </div>
         <i onclick="Delete(this, ${price})" class="fa-solid fa-circle-xmark hover:text-red-600 text-gray-500 text-2xl"></i>
-  `
-addToCardCon.appendChild(div);
+  `;
+  addToCardCon.appendChild(div);
   // update total sum
   const total = parseFloat(totalSum.innerText) + price;
   totalSum.innerText = total;
-}
+};
 
-  // Delete item from cart
+// Delete item from cart
 const Delete = (element, price) => {
-  console.log(element, price);
   element.parentElement.remove();
-  
+
   // update total sum after delete
   const total = parseFloat(totalSum.innerText) - price;
   totalSum.innerText = total;
-}
+};
 const showcaragories = (id) => {
-   showLoading();
-   console.log(id);
-   fetch(`https://openapi.programming-hero.com/api/category/${id}`)
+  showLoading();
+  fetch(`https://openapi.programming-hero.com/api/category/${id}`)
     .then((res) => res.json())
     .then((data) => {
       cardContainer.innerHTML = "";
       const categoryTrees = data.plants;
-      console.log(categoryTrees)
+      console.log(categoryTrees);
 
       categoryTrees.forEach((tree) => {
         // create a div for each tree Card
@@ -153,18 +162,18 @@ const showcaragories = (id) => {
               <button onclick="addToCard(${tree.id}, '${tree.name}', ${tree.price})"
                 class=" bg-[#15803D] text-white px-4 py-2 rounded-full hover:bg-[#0F7A2D] w-full">
                 Add to Cart
-              </button>`
-              cardContainer.appendChild(div);
-      })
-    })
-  };
+              </button>`;
+        cardContainer.appendChild(div);
+      });
+    });
+};
 //   Loading Animation
-  const showLoading = () =>{
-    cardContainer.innerHTML = `
-            <div class="loader align-center justify-center mb-4 " id="loader">
+const showLoading = () => {
+  cardContainer.innerHTML = `
+            <div class="loader align-center justify-center mb-4 " id="loader ">
               <span class="bar"></span>
               <span class="bar"></span>
               <span class="bar"></span>
             </div>
-    `
-  }
+    `;
+};
