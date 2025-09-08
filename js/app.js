@@ -11,11 +11,11 @@ allTrees.addEventListener("click", () => {
 });
 
 const allTreesFun = () => {
+  cardContainer.innerHTML = "";
   fetch("https://openapi.programming-hero.com/api/plants")
     .then((res) => res.json())
     .then((data) => {
       const allTreesData = data.plants;
-      // console.log(cardCategories);
 
       allTreesData.forEach((tree) => {
         // create a div for each tree Card
@@ -53,17 +53,6 @@ const allTreesFun = () => {
 };
 allTreesFun(); // call the function to load all trees initially ----------------------
 
-// all category fetch and display
-const allCategory = () => {
-  fetch("https://openapi.programming-hero.com/api/category/1")
-    .then((res) => res.json())
-    .then((data) => {
-      const allTreesData = data.plants;
-      console.log(allTreesData);
-
-    })
-    .catch((error) => console.log(error));
-  }
 
 // all categories in the sidebar
 const cards = () => {
@@ -71,10 +60,18 @@ const cards = () => {
     .then((res) => res.json())
     .then((data) => {
       const categoryName = data.categories.map((cat) => cat.category_name);
-      categoryName.forEach((name) => {
+      const categorysId = data.categories.map((id) => id.id);
+      categoryName.forEach((cat) => {
         const li = document.createElement("li");
+        li.onclick = () => {
+          categorysId.forEach((categoryId, index) => {
+            if (cat === categoryName[index]) {
+              showcaragories(categoryId);
+            }
+          });
+          }
         li.className = "p-2 hover:bg-[#15803D] hover:text-white rounded";
-        li.textContent = name;
+        li.textContent = cat;
 
         categoryList.appendChild(li);
       });
@@ -117,3 +114,57 @@ const Delete = (element, price) => {
   const total = parseFloat(totalSum.innerText) - price;
   totalSum.innerText = total;
 }
+const showcaragories = (id) => {
+   showLoading();
+   console.log(id);
+   fetch(`https://openapi.programming-hero.com/api/category/${id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      cardContainer.innerHTML = "";
+      const categoryTrees = data.plants;
+      console.log(categoryTrees)
+
+      categoryTrees.forEach((tree) => {
+        // create a div for each tree Card
+        const div = document.createElement("div");
+        div.className = "bg-white p-4 rounded shadow ";
+        div.innerHTML = `
+        <img src="${tree.image}" alt="Tree 1" class="w-full h-48 object-cover rounded mb-4 bg-gray-200"/>
+              
+              <h3 class="text-xl font-bold mb-2">
+              ${tree.name}
+              </h3>
+             
+              <p class="text-gray-700 mb-4">
+                ${tree.description}
+              </p>
+              
+              <div class="flex justify-between items-center mb-4">
+                <p class="bg-[#DCFCE7] py-2 px-3 rounded-full">
+                ${tree.category}
+                </p>
+                <p>
+                  <i class="fa-solid fa-bangladeshi-taka-sign"></i
+                  ><span class="font-bold">
+                  ${tree.price}
+                  </span>
+                </p>
+              </div>
+              <button onclick="addToCard(${tree.id}, '${tree.name}', ${tree.price})"
+                class=" bg-[#15803D] text-white px-4 py-2 rounded-full hover:bg-[#0F7A2D] w-full">
+                Add to Cart
+              </button>`
+              cardContainer.appendChild(div);
+      })
+    })
+  };
+//   Loading Animation
+  const showLoading = () =>{
+    cardContainer.innerHTML = `
+            <div class="loader align-center justify-center mb-4 " id="loader">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+    `
+  }
