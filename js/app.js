@@ -203,16 +203,14 @@ const showModal = (id) => {
   fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
     .then(res => res.json())
     .then(data => {
-      const tree = data.plants; // এখানে plant আসবে, plants না
+      const tree = data.plants; 
 
-      // modal content set করা
       document.getElementById("modal-title").innerText = tree.name;
       document.getElementById("modal-img").src = tree.image;
       document.getElementById("modal-category").innerHTML = `<span class="font-bold">Category:</span> ${tree.category}`;
       document.getElementById("modal-price").innerHTML = `<span class="font-bold">Price:</span> <i class="fa-solid fa-bangladeshi-taka-sign"></i>${tree.price}`;
       document.getElementById("modal-description").innerHTML = `<span class="font-bold">Description:</span> ${tree.description}`;
 
-      // modal open করো
       document.getElementById("my_modal_1").showModal();
     })
     .catch(error => console.log(error));
