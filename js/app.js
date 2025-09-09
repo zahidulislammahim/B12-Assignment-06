@@ -199,41 +199,6 @@ const showLoading = () => {
   `;
 };
 
-// Modal function
-// const showModal = (id) => {
-//   fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
-//   .then(res => res.json())
-//   .then(data =>{
-//   const tree = data.plants;
-//   console.log(tree);
-  
-//   const modal = document.getElementById("openModal");
-//   modal.style.display = "block";
-//   const div =document.createElement("div");
-//   div.innerHTML=`
-//   <dialog id="my_modal_1" class="modal">
-//         <div class="modal-box">
-//           <h3 class="text-lg font-bold">${tree.name}</h3>
-//           <img src="${tree.image}" alt="">
-//           <p class="py-4"><span class="font-bold">Category:</span>${tree.category}</p>
-//           <p class="py-4"><span class="font-bold">Price:</span><i class="fa-solid fa-bangladeshi-taka-sign"></i
-//                   >${tree.price}</p>
-//           <p class="py-4"><span class="font-bold">Description:</span>${tree.description}</p>
-//           <div class="modal-action">
-//             <form method="dialog">
-//               <!-- if there is a button in form, it will close the modal -->
-//               <button class="btn">Close</button>
-//             </form>
-//           </div>
-//         </div>
-//       </dialog>
-//   `;
-//   modal.appendChild(div);
-// })
-// .catch(error => console.log(error));
-// }
-
-
 const showModal = (id) => {
   fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
     .then(res => res.json())

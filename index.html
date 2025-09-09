@@ -79,7 +79,7 @@
           Green Earth
         </h2>
         <ul class="hidden space-x-4 text-white md:flex md:flex-row">
-          <li class="cursor-pointer hover:underline ">About</li>
+          <li class="cursor-pointer hover:underline">About</li>
           <li class="cursor-pointer hover:underline">Gallery</li>
           <li class="cursor-pointer hover:underline">plant a tree</li>
         </ul>
@@ -135,8 +135,16 @@
         <div class="flex-1">
           <div
             id="card-container"
-            class="grid grid-cols-1 md:grid-cols-3 gap-4"
-          ></div>
+            class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div
+              class="flex justify-center items-center w-full h-64 col-span-full" >
+              <div class="loader">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Cart -->
@@ -247,7 +255,12 @@
     <dialog id="my_modal_1" class="modal">
       <div class="modal-box">
         <h3 id="modal-title" class="text-lg font-bold"></h3>
-        <img id="modal-img" src="" alt="" class=" w-full h-100 object-cover rounded-lg mx-auto my-4" />
+        <img
+          id="modal-img"
+          src=""
+          alt=""
+          class="w-full h-100 object-cover rounded-lg mx-auto my-4"
+        />
         <p id="modal-category"></p>
         <p id="modal-price"></p>
         <p id="modal-description"></p>
