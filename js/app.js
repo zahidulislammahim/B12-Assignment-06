@@ -31,7 +31,7 @@ const allTreesFun = () => {
               <img src="${tree.image}" alt="Tree 1" class="w-full h-48 object-cover rounded mb-4 bg-gray-200"/>
               
               <h3 class="text-xl font-bold mb-2" onclick="showModal(${tree.id})">
-              ${tree.name}
+              ${tree.name}  <i class="fa-solid fa-arrow-up-right-from-square opacity-10"></i>
               </h3>
              
               <p class="text-gray-700 mb-4">
@@ -160,7 +160,7 @@ const showcaragories = (id) => {
         <img src="${tree.image}" alt="Tree 1" class="w-full h-48 object-cover rounded mb-4 bg-gray-200"/>
               
               <h3 class="text-xl font-bold mb-2" onclick="showModal(${tree.id})">
-              ${tree.name}
+              ${tree.name}  <i class="fa-solid fa-arrow-up-right-from-square opacity-10"></i>
               </h3>
              
               <p class="text-gray-700 mb-4">
