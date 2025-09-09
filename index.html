@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Green Earth</title>
-    <!-- Daisy UI and Teliwind Set up -->
+    <!-- Daisy UI and tailwind Set up -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@5"
       rel="stylesheet"
@@ -65,6 +65,11 @@
           transform: scaleY(1);
         }
       }
+      .items-card:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform: translateY(-5px);
+        transition: all 0.3s ease;
+      }
     </style>
   </head>
   <body class="bg-[#F0FDF4]">
@@ -73,13 +78,13 @@
         <h2 class="text-[#FFF] font-bold text-2xl cursor-pointer">
           Green Earth
         </h2>
-        <ul class="hidden  space-x-4 text-white md:flex md:flex-row ">
-          <li class="cursor-pointer">About</li>
-          <li class="cursor-pointer">Gallery</li>
-          <li class="cursor-pointer">plant a tree</li>
+        <ul class="hidden space-x-4 text-white md:flex md:flex-row">
+          <li class="cursor-pointer hover:underline ">About</li>
+          <li class="cursor-pointer hover:underline">Gallery</li>
+          <li class="cursor-pointer hover:underline">plant a tree</li>
         </ul>
         <button
-          class="bg-[#FACC15] rounded-full px-5 py-3 text-[#15803D] font-semibold cursor-pointer"
+          class="bg-[#FACC15] rounded-full px-5 py-3 text-[#15803D] font-semibold cursor-pointer hover:bg-[#ffe066]"
         >
           Plant a Tree
         </button>
@@ -100,7 +105,7 @@
             for future generations.
           </p>
           <button
-            class="bg-[#FACC15] rounded-full px-5 py-3 text-[#15803D] font-semibold cursor-pointer mb-15 mt-5"
+            class="bg-[#FACC15] rounded-full px-5 py-3 text-[#15803D] font-semibold cursor-pointer mb-15 mt-5 hover:bg-[#ffe066]"
           >
             Get Involved
           </button>
@@ -128,8 +133,6 @@
         </aside>
 
         <div class="flex-1">
-
-          <!-- Cards -->
           <div
             id="card-container"
             class="grid grid-cols-1 md:grid-cols-3 gap-4"
@@ -185,15 +188,15 @@
       <div
         class="flex flex-col md:flex-row md:gap-14 items-center justify-center gap-8 p-8 text-center"
       >
-        <div class="bg-white px-24 py-10 rounded-xl w-96">
+        <div class="bg-white px-24 py-10 rounded-xl w-96 hover:bg-[#15803c2d]">
           <h3 class="text-3xl font-bold text-[#15803D]">500K+</h3>
           <p class="text-[#1F2937]">Trees planted</p>
         </div>
-        <div class="bg-white px-24 py-10 rounded-xl w-96">
+        <div class="bg-white px-24 py-10 rounded-xl w-96 hover:bg-[#15803c2d]">
           <h3 class="text-3xl font-bold text-[#15803D]">120+</h3>
           <p class="text-[#1F2937]">Communities Involved</p>
         </div>
-        <div class="bg-white px-24 py-10 rounded-xl w-96">
+        <div class="bg-white px-24 py-10 rounded-xl w-96 hover:bg-[#15803c2d]">
           <h3 class="text-3xl font-bold text-[#15803D]">30+</h3>
           <p class="text-[#1F2937]">Countries Reached</p>
         </div>
@@ -233,17 +236,32 @@
           <option>10</option>
         </select>
         <button
-          class="bg-[#FACC15] rounded-full px-5 py-3 text-[#15803D] font-semibold cursor-pointer w-full"
+          class="bg-[#FACC15] rounded-full px-5 py-3 text-[#15803D] font-semibold cursor-pointer w-full hover:bg-[#ffe066]"
         >
           Donate Now
         </button>
       </form>
     </section>
 
+    <!-- Modal Container -->
+    <dialog id="my_modal_1" class="modal">
+      <div class="modal-box">
+        <h3 id="modal-title" class="text-lg font-bold"></h3>
+        <img id="modal-img" src="" alt="" class=" w-full h-100 object-cover rounded-lg mx-auto my-4" />
+        <p id="modal-category"></p>
+        <p id="modal-price"></p>
+        <p id="modal-description"></p>
+        <div class="modal-action">
+          <form method="dialog">
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
     <footer class="bg-[#14532D] text-center text-[#FFF] p-4">
       <p>© 2025 Green Earth. All Rights Reserved.</p>
     </footer>
-
     <script src="js/app.js"></script>
   </body>
 </html>

@@ -26,11 +26,11 @@ const allTreesFun = () => {
       allTreesData.forEach((tree) => {
         // create a div for each tree Card
         const div = document.createElement("div");
-        div.className = "bg-white p-4 rounded shadow ";
+        div.className = "bg-white p-4 rounded shadow items-card";
         div.innerHTML = `
               <img src="${tree.image}" alt="Tree 1" class="w-full h-48 object-cover rounded mb-4 bg-gray-200"/>
               
-              <h3 class="text-xl font-bold mb-2">
+              <h3 class="text-xl font-bold mb-2" onclick="showModal(${tree.id})">
               ${tree.name}
               </h3>
              
@@ -50,7 +50,7 @@ const allTreesFun = () => {
                 </p>
               </div>
               <button onclick="addToCard(${tree.id}, '${tree.name}', ${tree.price})"
-                class=" bg-[#15803D] text-white px-4 py-2 rounded-full hover:bg-[#0F7A2D] w-full">
+                class=" bg-[#15803D] text-white px-4 py-2 rounded-full hover:bg-[#0f7a2dd8] w-full">
                 Add to Cart
               </button>`;
         cardContainer.appendChild(div);
@@ -155,11 +155,11 @@ const showcaragories = (id) => {
       categoryTrees.forEach((tree) => {
         // create a div for each tree Card
         const div = document.createElement("div");
-        div.className = "bg-white p-4 rounded shadow ";
+        div.className = "bg-white p-4 rounded shadow items-card";
         div.innerHTML = `
         <img src="${tree.image}" alt="Tree 1" class="w-full h-48 object-cover rounded mb-4 bg-gray-200"/>
               
-              <h3 class="text-xl font-bold mb-2">
+              <h3 class="text-xl font-bold mb-2" onclick="showModal(${tree.id})">
               ${tree.name}
               </h3>
              
@@ -179,7 +179,7 @@ const showcaragories = (id) => {
                 </p>
               </div>
               <button onclick="addToCard(${tree.id}, '${tree.name}', ${tree.price})"
-                class=" bg-[#15803D] text-white px-4 py-2 rounded-full hover:bg-[#0F7A2D] w-full">
+                class=" bg-[#15803D] text-white px-4 py-2 rounded-full hover:bg-[#0f7a2dd8] w-full">
                 Add to Cart
               </button>`;
         cardContainer.appendChild(div);
@@ -197,4 +197,58 @@ const showLoading = () => {
       </div>
     </div>
   `;
+};
+
+// Modal function
+// const showModal = (id) => {
+//   fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
+//   .then(res => res.json())
+//   .then(data =>{
+//   const tree = data.plants;
+//   console.log(tree);
+  
+//   const modal = document.getElementById("openModal");
+//   modal.style.display = "block";
+//   const div =document.createElement("div");
+//   div.innerHTML=`
+//   <dialog id="my_modal_1" class="modal">
+//         <div class="modal-box">
+//           <h3 class="text-lg font-bold">${tree.name}</h3>
+//           <img src="${tree.image}" alt="">
+//           <p class="py-4"><span class="font-bold">Category:</span>${tree.category}</p>
+//           <p class="py-4"><span class="font-bold">Price:</span><i class="fa-solid fa-bangladeshi-taka-sign"></i
+//                   >${tree.price}</p>
+//           <p class="py-4"><span class="font-bold">Description:</span>${tree.description}</p>
+//           <div class="modal-action">
+//             <form method="dialog">
+//               <!-- if there is a button in form, it will close the modal -->
+//               <button class="btn">Close</button>
+//             </form>
+//           </div>
+//         </div>
+//       </dialog>
+//   `;
+//   modal.appendChild(div);
+// })
+// .catch(error => console.log(error));
+// }
+
+
+const showModal = (id) => {
+  fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
+    .then(res => res.json())
+    .then(data => {
+      const tree = data.plants; // এখানে plant আসবে, plants না
+
+      // modal content set করা
+      document.getElementById("modal-title").innerText = tree.name;
+      document.getElementById("modal-img").src = tree.image;
+      document.getElementById("modal-category").innerHTML = `<span class="font-bold">Category:</span> ${tree.category}`;
+      document.getElementById("modal-price").innerHTML = `<span class="font-bold">Price:</span> <i class="fa-solid fa-bangladeshi-taka-sign"></i>${tree.price}`;
+      document.getElementById("modal-description").innerHTML = `<span class="font-bold">Description:</span> ${tree.description}`;
+
+      // modal open করো
+      document.getElementById("my_modal_1").showModal();
+    })
+    .catch(error => console.log(error));
 };
